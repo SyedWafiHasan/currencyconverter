@@ -1,7 +1,8 @@
+import 'package:currencyconverter/currency_converter_material.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 /// Two types of widgets -
@@ -9,16 +10,20 @@ void main() {
 /// 2. Statefull Widgets
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final ThemeData theme = ThemeData();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text("Currency Converter"),),
-        body: const Center(
-          child: Text("Hello world!"),
-        ),
+      home: const CurrencyConverterMaterialPage(),
+      debugShowCheckedModeBanner: false,
+      theme: theme.copyWith(
+        colorScheme: theme.colorScheme.copyWith(
+          primary: Colors.white,
+          secondary: Colors.pinkAccent,
+        )
       ),
     );
   }
