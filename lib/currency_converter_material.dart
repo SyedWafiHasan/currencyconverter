@@ -5,6 +5,8 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController textEditingController = TextEditingController();
+    double result = 0;
     const border = OutlineInputBorder(
       borderSide: BorderSide(
         style: BorderStyle.solid,
@@ -18,7 +20,10 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
         backgroundColor: Colors.blueGrey,
         elevation: 0,
         centerTitle: true,
-        titleTextStyle: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold,),
+        titleTextStyle: const TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       backgroundColor: Colors.blueGrey,
       body: Center(
@@ -33,14 +38,14 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(10),
+            Padding(
+              padding: const EdgeInsets.all(10),
               child: TextField(
-                style: TextStyle(color: Colors.black),
-                keyboardType: TextInputType.numberWithOptions(
-                  decimal: true,
-                ),
-                decoration: InputDecoration(
+                controller: textEditingController,
+                style: const TextStyle(color: Colors.black),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.monetization_on),
                   prefixIconColor: Colors.black,
                   hintText: 'Please enter the amount in USD',
@@ -56,7 +61,8 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: TextButton(
                 onPressed: () {
-                  debugPrint('Convert button pressed');
+                  result = double.parse(textEditingController.text) * 82.5;
+                  print(result);
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.black,
