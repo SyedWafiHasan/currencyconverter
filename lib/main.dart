@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: theme.copyWith(
         colorScheme: theme.colorScheme.copyWith(
-          primary: Colors.white,
+          primary: Colors.blueGrey,
           secondary: Colors.pinkAccent,
         )
       ),

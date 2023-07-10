@@ -5,16 +5,27 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      // appBar: AppBar(
-      //   title: const Text("Currency Converter"),
-      // ),
+    const border = OutlineInputBorder(
+      borderSide: BorderSide(
+        style: BorderStyle.solid,
+        width: 2.0,
+      ),
+      borderRadius: BorderRadius.all(Radius.circular(5)),
+    );
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Currency Converter"),
+        backgroundColor: Colors.blueGrey,
+        elevation: 0,
+        centerTitle: true,
+        titleTextStyle: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold,),
+      ),
       backgroundColor: Colors.blueGrey,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               '0',
               style: TextStyle(
                 fontSize: 45,
@@ -22,19 +33,42 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            TextField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.monetization_on),
-                prefixIconColor: Colors.black,
-                hintText: 'Please enter the amount in USD',
-                hintStyle: TextStyle(
-                  color: Colors.black,
+            const Padding(
+              padding: EdgeInsets.all(10),
+              child: TextField(
+                style: TextStyle(color: Colors.black),
+                keyboardType: TextInputType.numberWithOptions(
+                  decimal: true,
                 ),
-                filled: true,
-                fillColor: Colors.white,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.monetization_on),
+                  prefixIconColor: Colors.black,
+                  hintText: 'Please enter the amount in USD',
+                  hintStyle: TextStyle(color: Colors.black26),
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: border,
+                  enabledBorder: border,
+                ),
               ),
-              style: TextStyle(
-                color: Colors.white,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: TextButton(
+                onPressed: () {
+                  debugPrint('Convert button pressed');
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(double.infinity, 50),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5),
+                    ),
+                  ),
+                ),
+                child: const Text('Convert'),
               ),
             ),
           ],
