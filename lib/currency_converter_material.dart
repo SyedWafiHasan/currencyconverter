@@ -10,8 +10,22 @@ class CurrencyConverterMaterialPage extends StatefulWidget {
 
 class _CurrencyConverterMaterialPageState
     extends State<CurrencyConverterMaterialPage> {
+  
   double result = 0;
   final TextEditingController textEditingController = TextEditingController();
+  
+  void convert() {
+    textEditingController.text.isEmpty
+        ? result = 0
+        : result = double.parse(textEditingController.text) * 82.5;
+    setState(() {});
+  }
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,15 +82,7 @@ class _CurrencyConverterMaterialPageState
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: TextButton(
-                onPressed: () {
-                  setState(() {
-                    if (textEditingController.text != '0' && textEditingController.text.isNotEmpty) {
-                      result = double.parse(textEditingController.text) * 82.5;
-                    } else {
-                      result = 0;
-                    }
-                  });
-                },
+                onPressed: convert,
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,

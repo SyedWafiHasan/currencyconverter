@@ -1,16 +1,19 @@
+import 'package:currencyconverter/currency_converter_cupertino.dart';
 import 'package:currencyconverter/currency_converter_material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MyMaterialApp());
+  // runApp(const MyCupertinoApp());
 }
 
 /// Two types of widgets -
 /// 1. Stateless Widgets
 /// 2. Statefull Widgets
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class MyMaterialApp extends StatelessWidget {
+  MyMaterialApp({super.key});
 
   final ThemeData theme = ThemeData();
 
@@ -20,11 +23,22 @@ class MyApp extends StatelessWidget {
       home: const CurrencyConverterMaterialPage(),
       debugShowCheckedModeBanner: false,
       theme: theme.copyWith(
-        colorScheme: theme.colorScheme.copyWith(
-          primary: Colors.blueGrey,
-          secondary: Colors.pinkAccent,
-        )
-      ),
+          colorScheme: theme.colorScheme.copyWith(
+        primary: Colors.blueGrey,
+        secondary: Colors.pinkAccent,
+      )),
+    );
+  }
+}
+
+class MyCupertinoApp extends StatelessWidget {
+  const MyCupertinoApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const CupertinoApp(
+      home: CurrencyConverterCupertinoPage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
